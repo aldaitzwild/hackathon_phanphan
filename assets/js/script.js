@@ -1,3 +1,38 @@
+class Target {
+
+
+
+    constructor(draw, size, color, name, time) {
+        this.size = size;
+        this.color = color;
+        this.name = name;
+        this.time = time;
+
+        this.randomX = Math.random() * (window.innerWidth - this.size)
+        this.randomY = Math.random() * (380 - this.size)
+
+        this.element = draw.circle(size);
+        this.element.move(this.randomX + 50, this.randomY);
+        this.element.stroke({ color: 'black', opacity: 1, width: 1 });
+        this.element.fill(color);
+
+        setTimeout( this.fadeAway, this.time, this.element);
+    }
+
+    fadeAway = ( function (element) {
+        console.log(element);
+        element.animate()
+                .opacity(0)
+                .after(function () {
+                    element.remove
+                })
+                ;
+    });
+
+
+}
+
+
 const trump = document.getElementById('phanphan_trump');
 const gamePanel = document.getElementById('gamePanel');
 let draw = SVG("#drawPanel");
@@ -48,4 +83,20 @@ document.onclick = (event) => {
 
     
 }
+
+
+function loopTarget () {
+    for (let index = 0; index < 3; index++) {
+        new Target(draw, 80, '#fa0a1a', 'tokyo', 600);
+        new Target(draw, 160, 'green', 'Nemours', 1200);
+        new Target(draw, 240, 'orange', 'Dunkerque', 1700);
+    }
+
+    setTimeout(loopTarget, 3000);
+}
+
+loopTarget();
+
+
+
 

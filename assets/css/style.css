@@ -20,6 +20,15 @@ main {
     height: 70vh;
 }
 
+#gamePanel {
+    width: 100%;
+    height: 70vh;
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 #phanphan_head {
     position: fixed;
     display: inline-block;
