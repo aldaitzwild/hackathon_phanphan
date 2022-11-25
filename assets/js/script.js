@@ -1,41 +1,69 @@
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 class Target {
 
 
 
     constructor(draw, size, color, name, time) {
-        this.size = size;
+        this.size = size ;
         this.color = color;
         this.name = name;
         this.time = time;
+        this.isDead = false;
 
-        this.randomX = Math.random() * (window.innerWidth - this.size)
-        this.randomY = Math.random() * (380 - this.size)
+        this.x = getRandomInt(window.innerWidth)
+        this.y = getRandomInt(380)
 
-        this.element = draw.circle(size);
-        this.element.move(this.randomX + 50, this.randomY);
+        this.element = draw.circle(this.size);
+        this.element.center(this.x, this.y);
         this.element.stroke({ color: 'black', opacity: 1, width: 1 });
         this.element.fill(color);
+        this.element.animate({duration: this.time}).ease('-').move(getRandomInt(window.innerWidth), getRandomInt(380));
 
-        setTimeout( this.fadeAway, this.time, this.element);
+
+        setTimeout( this.fadeAway, this.time, this);
     }
 
-    fadeAway = ( function (element) {
-        console.log(element);
-        element.animate()
+    fadeAway = ( function (target) {
+        target.isDead = true;
+        target.element.animate()
                 .opacity(0)
                 .after(function () {
-                    element.remove
+                    target.element.remove()
                 })
                 ;
     });
+    
+
+    touch (x, y) {
+        let colisionHalo = this.size / 2 ;
+        
+        if(x >= this.element.cx() - colisionHalo && x <= this.element.cx() + colisionHalo 
+            && y >= this.element.cy() - colisionHalo && y <= this.element.cy() + colisionHalo) {
+                return true;
+        }
+
+        return false;
+    }
+
+    kill() {
+        this.isDead = true;
+        this.element.remove();
+
+        document.getElementById(this.name).innerHTML += "+";
+    }
 
 
 }
 
 
+
 const trump = document.getElementById('phanphan_trump');
 const gamePanel = document.getElementById('gamePanel');
 let draw = SVG("#drawPanel");
+let targets = [];
 
 document.onmousemove = (event) => {
     let x = event.clientX * 100 / window.innerWidth ;
@@ -58,7 +86,7 @@ document.onclick = (event) => {
     let y = event.clientY;
 
     draw.ellipse(150, 100)
-        .fill('#002933')  
+        .fill('#002933')
         .move(trump.getBoundingClientRect().top, trump.getBoundingClientRect().left + 20 )
         .animate()
         .ease('-')
@@ -68,16 +96,28 @@ document.onclick = (event) => {
             this.element().remove();
 
             const bang = document.createElement("div");
-            bang.classList.add("bang");
-            bang.innerHTML = "SPLASH";
-            bang.style.top = y + "px";
-            bang.style.left = x + "px";
 
-            gamePanel.appendChild(bang);
+            for (const target of targets) {
+                if(target.isDead) continue;
+
+                if(target.touch(x, y))
+                {
+                    bang.classList.add("bang");
+                    bang.innerHTML = "SPLASH";
+                    bang.style.top = y + "px";
+                    bang.style.left = x + "px";
+                    gamePanel.appendChild(bang);
+
+                    target.kill();
+                    break; 
+                }
+            }
 
             setTimeout(() => {
                 bang.remove();
-              }, "300")
+            }, "300")
+
+            
         })   
         ;
 
@@ -86,13 +126,20 @@ document.onclick = (event) => {
 
 
 function loopTarget () {
-    for (let index = 0; index < 3; index++) {
-        new Target(draw, 80, '#fa0a1a', 'tokyo', 600);
-        new Target(draw, 160, 'green', 'Nemours', 1200);
-        new Target(draw, 240, 'orange', 'Dunkerque', 1700);
+    targetTypes = [
+        [50, '#fa0a1a', 'Tokyo', 1400 ],
+        [150, 'green', 'Nemours', 1800 ],
+        [250, 'orange', 'Dunkerque', 2400 ],
+    ];
+    for (let index = 0; index < getRandomInt(3); index++) {
+        let i = getRandomInt(targetTypes.length);
+        targets.push(new Target(draw, 
+            targetTypes[i][0], 
+            targetTypes[i][1], 
+            targetTypes[i][2], 
+            targetTypes[i][3]));
     }
-
-    setTimeout(loopTarget, 3000);
+    setTimeout(loopTarget, getRandomInt(1000));
 }
 
 loopTarget();
