@@ -56,6 +56,10 @@ class Target {
             '<img src="/assets/img/plane.png" class="' 
             + this.name + 'Point score" style="background-color: ' 
             + this.color + '">';
+
+        if(document.getElementsByClassName(this.name + 'Point').length >= 10) {
+            window.location.href = "/" + this.name + ".html";
+        }
     }
 
 
@@ -149,11 +153,11 @@ function loopTarget () {
 }
 
 
-draw.text("3").font({family:'Impact', size: 144}).size(50).move(window.innerWidth /2, 190).animate({duration: 1500}).size(100).opacity(0)
+draw.text("3").fill("orange").font({family:'Impact', size: 144}).size(50).move(window.innerWidth /2, 190).animate({duration: 1500}).size(100).opacity(0)
 .after(function() {
-    draw.text("2").font({family:'Impact', size: 144}).size(50).move(window.innerWidth /2, 190).animate({duration: 1500}).size(100).opacity(0)
+    draw.text("2").fill("green").font({family:'Impact', size: 144}).size(50).move(window.innerWidth /2, 190).animate({duration: 1500}).size(100).opacity(0)
     .after(function() {
-        draw.text("1").font({family:'Impact', size: 144}).size(50).move(window.innerWidth /2, 190).animate({duration: 1500}).size(100).opacity(0)
+        draw.text("1").fill("#fa0a1a").font({family:'Impact', size: 144}).size(50).move(window.innerWidth /2, 190).animate({duration: 1500}).size(100).opacity(0)
         .after(function () {
             loopTarget();
         });
