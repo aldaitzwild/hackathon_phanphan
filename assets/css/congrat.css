@@ -1,0 +1,34 @@
+
+@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+
+.congratBody {
+    background-color: #8993be;
+}
+
+.congrats {
+	position: absolute;
+	top: 140px;
+	width: 550px;
+	height: 100px;
+	padding: 20px 10px;
+	text-align: center;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+}
+
+.congratH1 {
+	transform-origin: 50% 50%;
+	font-size: 50px;
+	font-family: 'Sigmar One', cursive;
+	top: 0;
+	text-align: center;
+	width: 100%;
+}
+
+.congratText {
+    font-size: 32px;
+	font-family: 'Sigmar One', cursive;
+    text-align: center;
+
+}

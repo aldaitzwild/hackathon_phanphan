@@ -59,6 +59,51 @@ main {
     position: absolute;
 }
 
+.home {
+
+background-image: url("../img/homepage.png");
+background-repeat: no-repeat;
+background-position: center;
+background-size: contain;
+background-color: #291b30;
+height: 100vh;
+
+}
+
+#hello {
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+  text-align: center;
+  color: #fff;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  color: pink;
+  font-size: 64px;
+}
+
+.button {
+  font-size: 32px;
+  width: fit-content;
+  height: 50px;
+  width: 150px;
+}
+
+a {
+text-decoration: none;
+}
+
 .score {
     width: 40px;
 }
