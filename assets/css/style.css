@@ -5,6 +5,7 @@ body {
     width: 100vw;
     height: 100vh;
     margin: 0;
+    background-color: grey;
 }
 
 main {
@@ -101,4 +102,14 @@ h1 {
 
 a {
 text-decoration: none;
+}
+
+.score {
+    width: 40px;
+}
+
+.title {
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 16pt;
 }
