@@ -75,13 +75,16 @@ document.onmousemove = (event) => {
     let angle =  Math.atan2(50 - y,50 - x) * 40 - 60;
 
     
-    if(angle < -120) angle += 250;
-    if(angle < -90) angle = -90;
-    if(angle > 90) angle = 90;
+    if(angle < -120) angle += 220;
+    if(angle < -65) angle = -65;
+    if(angle > 65) angle = 65;
+
+    let translateX = (x - 50) / 2;
+    let translateY = (y - 50) / 2;
     
     trump.style.transform = 'rotate(' + angle  + 'deg)';
-    trump.style.transform += ' translateX(' + ((x - 50) * 2) + 'px)';
-    trump.style.transform += ' translateY(' + ((y - 50) * 2) + 'px)';
+    trump.style.transform += ' translateX(' + translateX + 'px)';
+    trump.style.transform += ' translateY(' + translateY + 'px)';
 }
 
 document.onclick = (event) => {
@@ -130,8 +133,8 @@ document.onclick = (event) => {
 
 function loopTarget () {
     targetTypes = [
-        [80, '#fa0a1a', 'Tokyo', 1400 ],
-        [150, 'green', 'Nemours', 1800 ],
+        [80, '#fa0a1a', 'Tokyo', 1900 ],
+        [150, 'green', 'Berlin', 1800 ],
         [250, 'orange', 'Dunkerque', 2400 ],
     ];
     for (let index = 0; index < getRandomInt(3); index++) {
