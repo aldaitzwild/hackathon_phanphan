@@ -108,7 +108,8 @@ img {
     width: fit-content;
     height: 50px;
     width: 200px;
-  margin-top: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
   
   a {
