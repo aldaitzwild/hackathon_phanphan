@@ -7,10 +7,8 @@
 
 .congrats {
 	position: absolute;
-	top: 140px;
-	width: 550px;
-	height: 100px;
-	padding: 20px 10px;
+	width: 100vw;
+	height: 90vh;
 	text-align: center;
 	margin: 0 auto;
 	left: 0;
@@ -97,9 +95,22 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: 25vw;
 }
 
 .tokyo {
     height: 500px;
 }
+
+.button {
+    cursor: pointer;
+    font-size: 32px;
+    width: fit-content;
+    height: 50px;
+    width: 200px;
+  margin-top: 10px;
+  }
+  
+  a {
+  text-decoration: none;
+  }
