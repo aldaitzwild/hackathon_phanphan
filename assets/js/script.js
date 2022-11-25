@@ -52,7 +52,10 @@ class Target {
         this.isDead = true;
         this.element.remove();
 
-        document.getElementById(this.name).innerHTML += "+";
+        document.getElementById(this.name).innerHTML += 
+            '<img src="/assets/img/plane.png" class="' 
+            + this.name + 'Point score" style="background-color: ' 
+            + this.color + '">';
     }
 
 
@@ -127,7 +130,7 @@ document.onclick = (event) => {
 
 function loopTarget () {
     targetTypes = [
-        [50, '#fa0a1a', 'Tokyo', 1400 ],
+        [80, '#fa0a1a', 'Tokyo', 1400 ],
         [150, 'green', 'Nemours', 1800 ],
         [250, 'orange', 'Dunkerque', 2400 ],
     ];
@@ -142,7 +145,17 @@ function loopTarget () {
     setTimeout(loopTarget, getRandomInt(1000));
 }
 
-loopTarget();
+
+draw.text("3").font({family:'Impact', size: 144}).size(50).move(window.innerWidth /2, 190).animate({duration: 1500}).size(100).opacity(0)
+.after(function() {
+    draw.text("2").font({family:'Impact', size: 144}).size(50).move(window.innerWidth /2, 190).animate({duration: 1500}).size(100).opacity(0)
+    .after(function() {
+        draw.text("1").font({family:'Impact', size: 144}).size(50).move(window.innerWidth /2, 190).animate({duration: 1500}).size(100).opacity(0)
+        .after(function () {
+            loopTarget();
+        });
+    });
+});
 
 
 

@@ -5,6 +5,7 @@ body {
     width: 100vw;
     height: 100vh;
     margin: 0;
+    background-color: grey;
 }
 
 main {
@@ -56,4 +57,14 @@ main {
     font-family: 'Permanent Marker', cursive;
     font-size: 30px;
     position: absolute;
+}
+
+.score {
+    width: 40px;
+}
+
+.title {
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 16pt;
 }
