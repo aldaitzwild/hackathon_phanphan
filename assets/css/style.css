@@ -91,16 +91,28 @@ h1 {
   text-align: center;
   color: pink;
   font-size: 64px;
+
+}
+
+.superTitle {
+  background-color: rgba(224, 222, 222, 0.2);
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .button {
+  cursor: pointer;
   font-size: 32px;
   width: fit-content;
   height: 50px;
   width: 150px;
+
 }
 
 a {
+  position: fixed;
+  top: 150px;
 text-decoration: none;
 }
 
